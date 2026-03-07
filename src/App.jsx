@@ -4,6 +4,8 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
+
+
 import StHome from './Components/Student/Pages/StHome';
 import StSubject from './Components/Student/Pages/StSubject';
 import StTest from './Components/Student/Pages/StTest';
@@ -48,6 +50,8 @@ function App() {
         <Route path="/ststudymaterials" element={<StStudyMaterials />} />
         <Route path="/stassiment" element={<StAssiment />} />
         <Route path="/sthomework" element={<StHomeWork />} />
+        
+        
 
         {/* TEACHER */}
         <Route path="/teclasses/" element={<TeClasses />}>

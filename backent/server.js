@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Product from "./module/Product.js"; // ✅ FIX 1: Add `.js` and correct model name
 
+
 dotenv.config();
 const app = express();
 
@@ -41,6 +42,71 @@ app.get("/products", async (req, res) => {
     res.status(500).json({ message: "❌ Error fetching products" });
   }
 });
+
+
+// 📅 Get Timetable
+app.get("/timetable", async (req, res) => {
+  try {
+    const data = await Timetable.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "❌ Error fetching timetable" });
+  }
+});
+
+
+// ➕ Add Timetable
+app.post("/timetable", async (req, res) => {
+  try {
+    const { subject, teacher, day, time } = req.body;
+
+    const timetable = new Timetable({
+      subject,
+      teacher,
+      day,
+      time
+    });
+
+    await timetable.save();
+
+    res.json({ message: "✅ Timetable added successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "❌ Error adding timetable" });
+  }
+});
+
+
+// 💰 Get Fees
+app.get("/fees", async (req, res) => {
+  try {
+    const data = await Fees.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "❌ Error fetching fees" });
+  }
+});
+
+// ➕ Add Fees
+app.post("/fees", async (req, res) => {
+  try {
+    const { student, amount, status } = req.body;
+
+    const fees = new Fees({
+      student,
+      amount,
+      status
+    });
+
+    await fees.save();
+
+    res.json({ message: "✅ Fees added successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "❌ Error adding fees" });
+  }
+});
+
+
+
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`🚀 E-ZONE backend running on port ${PORT}`));

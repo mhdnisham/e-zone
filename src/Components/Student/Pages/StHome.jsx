@@ -20,9 +20,13 @@ function StHome() {
         { id: 6, name: "Art & Design", image: "https://img.icons8.com/color/96/paint-palette.png", path: "/stsubject" },
     ];
 
-    const handleNavigation = (path) => {
+    /*const handleNavigation = (path) => {
         console.log(`Navigating to: ${path}`);
-    };
+    };*/
+
+    const handleNavigation = (path) => {
+    navigation(path);
+};
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans overflow-hidden ">
