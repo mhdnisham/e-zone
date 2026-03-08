@@ -12,13 +12,23 @@ app.use(cors());
 app.use(express.json());
 
 // 🔗 Connect MongoDB Atlas
+/*mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.log("❌ MongoDB Error:", err));*/
+
+
+
+
+// 🔗 Connect MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.log("❌ MongoDB Error:", err));
+  .catch((err) => console.log("❌ MongoDB Error:", err));
 
 app.get("/", (req, res) => {
   res.send("Backend running for E-ZONE!");
 });
+
+
 
 // ✅ FIX 2: Move routes **above app.listen()**
 app.post("/add-product", async (req, res) => {
