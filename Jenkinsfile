@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh 'docker build -t $DOCKER_USER/e-zone-backend ./backend'
-                sh 'docker build -t $DOCKER_USER/e-zone-frontend ./frontend'
+                sh 'docker build -t $DOCKER_USER/e-zone-frontend ./src'
             }
         }
 
