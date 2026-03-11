@@ -14,12 +14,12 @@ pipeline {
             }
         }
 
-        stage('Build Docker Images') {
-            steps {
-                sh 'docker build -t $DOCKER_USER/e-zone-backend ./backend'
-                sh   'docker build -t $DOCKER_USER/e-zone-frontend .'
-            }
-        }
+    stage('Build Docker Images') {
+    steps {
+        sh 'docker build -t nisham1234/e-zone:backend ./backend'
+        sh 'docker build -t nisham1234/e-zone:frontend .'
+    }
+}    
 
        stage('Docker Login') {
     steps {
