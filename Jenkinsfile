@@ -14,12 +14,27 @@ pipeline {
             }
         }
 
-    stage('Build Docker Images') {
+   /* stage('Build Docker Images') {
     steps {
         sh 'docker build -t nisham1234/e-zone:backend ./backend'
         sh 'docker build -t nisham1234/e-zone:frontend .'
     }
-}    
+}*/
+    
+      stage('Build Docker Images') {
+    steps {
+        sh 'docker build -t backendimage ./backend'
+        sh 'docker build -t frontendimage .'
+    }
+}
+
+    stage('change image name')
+    steps {
+
+       sh 'docker tag backendimage nisham1234/e-zone:latest' 
+       sh 'docker tag frontendimage nisham1234/e-zone:latest'
+
+    }    
 
        stage('Docker Login') {
     steps {
@@ -29,10 +44,18 @@ pipeline {
     }
 }    
 
-        stage('Push Images') {
+       /* stage('Push Images') {
             steps {
                 sh 'docker push $DOCKER_USER/e-zone-backend'
                 sh 'docker push $DOCKER_USER/e-zone-frontend'
+            }
+        }*/
+
+
+           stage('Push Images') {
+            steps {
+                sh 'docker push $DOCKER_USER/nisham1234/e-zone:latest'
+                sh 'docker push $DOCKER_USER/nisham1234/e-zone:latest'
             }
         }
 
