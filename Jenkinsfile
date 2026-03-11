@@ -28,7 +28,7 @@ pipeline {
     }
 }
 
-    stage('change image name')
+      stage('change image name')
     steps {
 
        sh 'docker tag backendimage nisham1234/e-zone:latest' 
