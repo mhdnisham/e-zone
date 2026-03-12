@@ -98,10 +98,18 @@ pipeline {
             }
         }*/
 
-         stage('Build Docker Images') {
+/*         stage('Build Docker Images') {
             steps {
                 sh 'docker build -t backendimage:${BUILD_NUMBER} ./backend'
                 sh 'docker build -t frontendimage:${BUILD_NUMBER} .'
+            }
+        }*/
+
+
+        stage('Build Docker Images') {
+            steps {
+                sh "docker build -t nisham1234/e-zone:backend-${BUILD_NUMBER} ./backend"
+                sh "docker build -t nisham1234/e-zone:frontend-${BUILD_NUMBER} ."
             }
         }
 
@@ -113,10 +121,18 @@ pipeline {
             }
         }
 
-        stage('Push Images') {
+/*        stage('Push Images') {
             steps {
                 sh 'docker push nisham1234/e-zone-backendimage:${BUILD_NUMBER}'
                 sh 'docker push nisham1234/e-zone-frontendimage:${BUILD_NUMBER}'
+            }
+        }*/
+
+
+         stage('Push Images') {
+            steps {
+                sh "docker push nisham1234/e-zone:backend-${BUILD_NUMBER}"
+                sh "docker push nisham1234/e-zone:frontend-${BUILD_NUMBER}"
             }
         }
 
