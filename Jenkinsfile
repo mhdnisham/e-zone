@@ -100,8 +100,8 @@ pipeline {
 
          stage('Build Docker Images') {
             steps {
-                sh 'docker build -t backendimage:${BUILD_NUMBER} ./backend'
-                sh 'docker build -t frontendimage:${BUILD_NUMBER} .'
+                sh 'docker build -t backendimage-${BUILD_NUMBER} ./backend'
+                sh 'docker build -t frontendimage-${BUILD_NUMBER} .'
             }
         }
 
@@ -115,8 +115,8 @@ pipeline {
 
         stage('Push Images') {
             steps {
-                sh 'docker push nisham1234/e-zone-backend:${BUILD_NUMBER}'
-                sh 'docker push nisham1234/e-zone-frontend:${BUILD_NUMBER}'
+                sh 'docker push nisham1234/e-zone:backend-${BUILD_NUMBER}'
+                sh 'docker push nisham1234/e-zone:frontend-${BUILD_NUMBER}'
             }
         }
 
