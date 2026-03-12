@@ -115,8 +115,8 @@ pipeline {
 
         stage('Push Images') {
             steps {
-                sh 'docker push nisham1234/e-zone:backendimage:${BUILD_NUMBER}'
-                sh 'docker push nisham1234/e-zone:frontendimage:${BUILD_NUMBER}'
+                sh 'docker push nisham1234/e-zone-backendimage:${BUILD_NUMBER}'
+                sh 'docker push nisham1234/e-zone-frontendimage:${BUILD_NUMBER}'
             }
         }
 
