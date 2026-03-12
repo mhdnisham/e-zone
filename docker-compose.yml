@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   backend:
-    image: nisham1234/e-zone:backend:${BUILD_NUMBER}
+    image: nisham1234/e-zone:backend-${BUILD_NUMBER}
     container_name: backend_container
     ports:
       - "50001:5000"
@@ -12,7 +12,7 @@ services:
     restart: always
 
   frontend:
-    image: nisham1234/e-zone:frontend:${BUILD_NUMBER}
+    image: nisham1234/e-zone:frontend-${BUILD_NUMBER}
     container_name: frontend_container
     ports:
       - "3000:80"

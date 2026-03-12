@@ -139,9 +139,18 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker-compose down'
-                /*sh 'docker-compose pull'*/
+                sh 'docker-compose pull'
                 sh 'docker-compose up -d'
             }
         }
+    
+ /*       stage('Deploy') {
+    steps {
+        sh "export BUILD_NUMBER=${BUILD_NUMBER} && docker-compose down"
+        sh "export BUILD_NUMBER=${BUILD_NUMBER} && docker-compose pull"
+        sh "export BUILD_NUMBER=${BUILD_NUMBER} && docker-compose up -d"
+    }
+}*/ 
+    
     }
 }   
